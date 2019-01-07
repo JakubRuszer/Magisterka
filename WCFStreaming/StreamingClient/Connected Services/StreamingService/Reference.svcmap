@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="df615ab2-920f-464e-b2f1-9ba91e76a6ff" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8732/StreamingService.Service" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="StreamingService.xsd" MetadataType="Schema" ID="33f6384f-651f-45b0-8fe4-15f5e654bc73" SourceId="1" SourceUrl="http://localhost:8732/StreamingService.Service?xsd=xsd2" />
+    <MetadataFile FileName="StreamingService1.xsd" MetadataType="Schema" ID="f58bb173-2588-4137-9e6b-af62b7c11db7" SourceId="1" SourceUrl="http://localhost:8732/StreamingService.Service?xsd=xsd1" />
+    <MetadataFile FileName="StreamingService.disco" MetadataType="Disco" ID="71c03830-87d4-4cf2-a2a4-f85fbe48156d" SourceId="1" SourceUrl="http://localhost:8732/StreamingService.Service?disco" />
+    <MetadataFile FileName="Service.wsdl" MetadataType="Wsdl" ID="2352635f-c5c1-4f55-b4e8-79a7f8cd995c" SourceId="1" SourceUrl="http://localhost:8732/StreamingService.Service?wsdl" />
+    <MetadataFile FileName="StreamingService2.xsd" MetadataType="Schema" ID="5423a27e-07df-4a6a-a257-6298005e8a19" SourceId="1" SourceUrl="http://localhost:8732/StreamingService.Service?xsd=xsd0" />
+    <MetadataFile FileName="StreamingService3.xsd" MetadataType="Schema" ID="cface0cf-15f7-44a4-a4f5-d4eb66baab5f" SourceId="1" SourceUrl="http://localhost:8732/StreamingService.Service?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

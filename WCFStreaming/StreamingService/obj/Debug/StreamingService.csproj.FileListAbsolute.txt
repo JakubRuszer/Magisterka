@@ -1,0 +1,7 @@
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\bin\Debug\StreamingService.dll.config
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\bin\Debug\StreamingService.dll
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\bin\Debug\StreamingService.pdb
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\obj\Debug\StreamingService.csproj.CoreCompileInputs.cache
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\obj\Debug\StreamingService.dll
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\obj\Debug\StreamingService.pdb
+C:\Users\jarus1\source\repos\WCFStreaming\StreamingService\obj\Debug\StreamingService.csprojAssemblyReference.cache

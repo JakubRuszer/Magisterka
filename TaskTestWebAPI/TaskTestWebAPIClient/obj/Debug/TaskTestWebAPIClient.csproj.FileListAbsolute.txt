@@ -1,0 +1,12 @@
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\bin\Debug\TaskTestWebAPIClient.exe.config
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\bin\Debug\TaskTestWebAPIClient.exe
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\bin\Debug\TaskTestWebAPIClient.pdb
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Debug\TaskTestWebAPIClient.csproj.CoreCompileInputs.cache
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Debug\TaskTestWebAPIClient.exe
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Debug\TaskTestWebAPIClient.pdb
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\TaskTestWebAPI\TaskTestWebAPIClient\bin\Debug\TaskTestWebAPIClient.exe.config
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\TaskTestWebAPI\TaskTestWebAPIClient\bin\Debug\TaskTestWebAPIClient.exe
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\TaskTestWebAPI\TaskTestWebAPIClient\bin\Debug\TaskTestWebAPIClient.pdb
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\TaskTestWebAPI\TaskTestWebAPIClient\obj\Debug\TaskTestWebAPIClient.csprojResolveAssemblyReference.cache
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\TaskTestWebAPI\TaskTestWebAPIClient\obj\Debug\TaskTestWebAPIClient.exe
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\TaskTestWebAPI\TaskTestWebAPIClient\obj\Debug\TaskTestWebAPIClient.pdb

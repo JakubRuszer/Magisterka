@@ -1,0 +1,7 @@
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\bin\Release\TaskTestWebAPIClient.exe.config
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\bin\Release\TaskTestWebAPIClient.exe
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\bin\Release\TaskTestWebAPIClient.pdb
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Release\TaskTestWebAPIClient.csprojAssemblyReference.cache
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Release\TaskTestWebAPIClient.csproj.CoreCompileInputs.cache
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Release\TaskTestWebAPIClient.exe
+C:\xyz\DebugAndOptimization\TaskTestWebAPIClient\obj\Release\TaskTestWebAPIClient.pdb
