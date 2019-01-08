@@ -27,9 +27,13 @@ namespace TaskTestWebAPI.Controllers
                 string httpPostedFileName = (httpPostedFile.FileName.LastIndexOf("\\") >= 0) ? httpPostedFile.FileName.Substring(httpPostedFile.FileName.LastIndexOf("\\") + 1) : httpPostedFile.FileName;
                 int pos = httpPostedFileName.LastIndexOf(".");
                 if (pos >= 0)
+                {
                     httpPostedFileName = httpPostedFileName.Insert(pos, String.Format("_{0}", Interlocked.Increment(ref FilesUploadAsyncController.counter)));
+                }
                 else
+                {
                     httpPostedFileName += String.Format("_{0}", Interlocked.Increment(ref FilesUploadAsyncController.counter));
+                }
                 string httpPostedFileTargetPathDir = HttpContext.Current.Server.MapPath("~/" + FilesUploadSyncController.destinationFolderName);
                 string httpPostedFileTargetPath = httpPostedFileTargetPathDir + "\\" + httpPostedFileName;
                 Stream inputStream = httpPostedFile.InputStream;

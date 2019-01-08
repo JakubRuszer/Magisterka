@@ -11,6 +11,6 @@
     <VerifyUploadedFiles>false</VerifyUploadedFiles>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>http://localhost:81/TaskTestWebAPI/api/FilesUploadSync "C:\Users\jarus1\Desktop\Jakub Ruszer\z starego kompa\C-5.0.-Programowanie.-Tworzenie-aplikacji-Windows-8-internetowych-oraz-biurowych-w-.NET-4.5-Framework.pdf" sync 10</StartArguments>
+    <StartArguments>http://localhost:81/TaskTestWebAPI/api/FilesUploadSync "C:\Users\jarus1\Desktop\Jakub Ruszer\szatan.jpg" sync 3</StartArguments>
   </PropertyGroup>
 </Project>
