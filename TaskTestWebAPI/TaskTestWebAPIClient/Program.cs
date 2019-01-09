@@ -19,7 +19,6 @@ namespace TaskTestWebAPIClient
         private static string mode = String.Empty;
         private static int numberOfConcurrentRequest = 20;
         private static string filesUploadAsyncUri = "http://localhost:81/TaskTestWebAPI/api/FilesUploadAsync";
-        private static string filesUploadAsyncWithContinuationUri = "http://localhost:81/TaskTestWebAPI/api/FilesUploadAsyncWithContinuation";
         private static string filesUploadSyncUri = "http://localhost:81/TaskTestWebAPI/api/FilesUploadSync";
 
         static void Main(string[] args)
@@ -36,7 +35,7 @@ namespace TaskTestWebAPIClient
 
             Program.webApiUrl = args[0];
             Program.fileToUpload = args[1];
-            Program.mode = (args[2] == "sync" || args[2] == "async" || args[2] == "asyncWithContinuation") ? args[2] : "sync";
+            Program.mode = (args[2] == "sync" || args[2] == "async") ? args[2] : "sync";
             if (Int32.TryParse(args[3], out Program.numberOfConcurrentRequest))
             {
                 if ((Program.numberOfConcurrentRequest < 1) || (Program.numberOfConcurrentRequest > 100))
@@ -51,9 +50,6 @@ namespace TaskTestWebAPIClient
                     break;
                 case "async":
                     ProcessWithAsyncService(httpClient);
-                    break;
-                case "asyncWithContinuation":
-                    ProcessWithAsyncWithContinuationService(httpClient);
                     break;
             }
 
@@ -114,21 +110,6 @@ namespace TaskTestWebAPIClient
 
             stopwatch.Stop();
             Console.WriteLine("Processing with ASYNC service took {0} ms", stopwatch.ElapsedMilliseconds);
-        }
-
-        private static void ProcessWithAsyncWithContinuationService(HttpClient httpClient)
-        {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
-            Task[] tabOfTasks = new Task[Program.numberOfConcurrentRequest];
-            for (int i = 0; i < Program.numberOfConcurrentRequest; i++)
-                tabOfTasks[i] = Program.SendFileToWebAPI(Program.fileToUpload, httpClient, Program.filesUploadAsyncWithContinuationUri);
-
-            for (int i = 0; i < Program.numberOfConcurrentRequest; i++)
-                tabOfTasks[i].Wait();
-
-            stopwatch.Stop();
-            Console.WriteLine("Processing with ASYNC With Continuation service took {0} ms", stopwatch.ElapsedMilliseconds);
         }
 
         private static async Task SendFileToWebAPI(string file, HttpClient httpClient, string webApiUrl)

@@ -90,7 +90,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FilesUploadAsyncWebApiTestClient.html" />
-    <Content Include="FilesUploadAsyncWithContinuationWebApiTestClient.html" />
     <Content Include="FilesUploadSyncWebApiTestClient.html" />
     <Content Include="Global.asax" />
     <Content Include="Web.config" />
@@ -99,7 +98,6 @@
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\FilesUploadAsyncController.cs" />
-    <Compile Include="Controllers\FilesUploadAsyncWithContinuationController.cs" />
     <Compile Include="Controllers\FilesUploadSyncController.cs" />
     <Compile Include="Controllers\Utils\NoBufferPolicyModifier.cs" />
     <Compile Include="Global.asax.cs">
