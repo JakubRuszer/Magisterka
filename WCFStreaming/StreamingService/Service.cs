@@ -6,11 +6,14 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Threading;
 
 namespace StreamingService
 {
     public class Service : IService
     {
+        public static int counter = 0;
+        private string destinationFolderName = "UploadsFile";
         public DownloadFileResponse DownloadFile(DownloadFileRequest request)
         {
             int result = 1;
@@ -45,6 +48,17 @@ namespace StreamingService
             UploadFileResponseHeader responseHeader = new UploadFileResponseHeader();
 
             string fileName = request.uploadFileRequestHeader.FileName;
+            string SendFileName = (fileName.LastIndexOf("\\") >= 0) ? fileName.Substring(fileName.LastIndexOf("\\") + 1) : fileName;
+            int pos = fileName.LastIndexOf(".");
+
+            if (pos >= 0)
+            {
+                SendFileName = SendFileName.Insert(pos, String.Format("_{0}", Interlocked.Increment(ref Service.counter)));
+            }
+            else
+            {
+                SendFileName += String.Format("_{0}", Interlocked.Increment(ref Service.counter));
+            }
 
             if (string.IsNullOrWhiteSpace(fileName))
             {
@@ -53,10 +67,17 @@ namespace StreamingService
             }
             else
             {
+
+                string fileTargetPathDir = "~/" + destinationFolderName;
+                string postedFileTargetPath = fileTargetPathDir + "\\" + SendFileName;
+
                 try
                 {
-                    string filePath = @"C:\Streaming\Data\" + fileName;
-                    using (FileStream fs = new FileStream(filePath, FileMode.Create))
+                    if (!Directory.Exists(fileTargetPathDir))
+                        Directory.CreateDirectory(fileTargetPathDir);
+
+                    //string filePath = @"C:\Streaming\Data\" + fileName;
+                    using (FileStream fs = new FileStream(postedFileTargetPath, FileMode.Create))
                     {
                         int bufferSize = 1048576;
                         byte[] buffer = new byte[bufferSize];

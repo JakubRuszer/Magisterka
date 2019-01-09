@@ -44,6 +44,7 @@ namespace TaskTestWebAPI.Controllers
                     fs = new FileStream(httpPostedFileTargetPath, FileMode.Create);
                     byte[] buffer = new byte[1048576];
                     int numberOfBytesRead = 0;
+                    // 
                     while ((numberOfBytesRead = await inputStream.ReadAsync(buffer, 0, 1048576)) != 0)
                         await fs.WriteAsync(buffer, 0, numberOfBytesRead);
 

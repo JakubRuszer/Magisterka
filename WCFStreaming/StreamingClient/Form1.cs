@@ -37,10 +37,10 @@ namespace StreamingClient
                 string nazwa = Path.GetFileName(path);
                 label1.Text = nazwa;
 
-                using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding()))
-                {
-                    UploadFileToService(nazwa);
-                }
+                //using (StreamReader reader = new StreamReader(new FileStream(path, FileMode.Open), new UTF8Encoding()))
+                //{
+                    UploadFileToService(path);
+                //}
             }
         }
         public void DownloadFileFromService(string fileName)
@@ -93,7 +93,10 @@ namespace StreamingClient
             UploadFileRequestHeader requestHeader = new UploadFileRequestHeader();
             UploadFileResponse response;
 
-            string filePath = ConfigurationManager.AppSettings["ClientFilePath"].ToString() + fileName;
+            // string filePath = ConfigurationManager.AppSettings["ClientFilePath"].ToString() + fileName;
+
+            string filePath = fileName;
+
 
             if (!File.Exists(filePath))
             {
@@ -101,7 +104,7 @@ namespace StreamingClient
                 return;
             }
 
-            requestHeader.FileName = fileName;
+            requestHeader.FileName = Path.GetFileName(filePath);
             request.uploadFileRequestHeader = requestHeader;
 
             using (FileStream fs = new FileStream(filePath, FileMode.Open))
