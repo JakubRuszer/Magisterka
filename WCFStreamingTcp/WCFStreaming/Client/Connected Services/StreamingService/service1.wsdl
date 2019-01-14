@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsp="http://www.w3.org/ns/ws-policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="NetTcpBinding_IService_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <msb:BinaryEncoding xmlns:msb="http://schemas.microsoft.com/ws/06/2004/mspolicy/netbinary1">
+        </msb:BinaryEncoding>
+        <msf:Streamed xmlns:msf="http://schemas.microsoft.com/ws/2006/05/framing/policy">
+        </msf:Streamed>
+        <wsam:Addressing>
+          <wsp:Policy>
+            <wsam:AnonymousResponses>
+            </wsam:AnonymousResponses>
+          </wsp:Policy>
+        </wsam:Addressing>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import namespace="http://tempuri.org/" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/StreamingService" />
+      <xsd:import namespace="http://schemas.microsoft.com/Message" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="DownloadFileRequest">
+    <wsdl:part name="parameters" element="tns:DownloadFileRequest" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileRequest_Headers">
+    <wsdl:part name="downloadFileRequestHeader" element="tns:downloadFileRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileResponse">
+    <wsdl:part name="parameters" element="tns:DownloadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="DownloadFileResponse_Headers">
+    <wsdl:part name="downloadFileResponseHeader" element="tns:downloadFileResponseHeader" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileRequest">
+    <wsdl:part name="parameters" element="tns:UploadFileRequest" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileRequest_Headers">
+    <wsdl:part name="uploadFileRequestHeader" element="tns:uploadFileRequestHeader" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileResponse">
+    <wsdl:part name="parameters" element="tns:UploadFileResponse" />
+  </wsdl:message>
+  <wsdl:message name="UploadFileResponse_Headers">
+    <wsdl:part name="uploadFileResponseHeader" element="tns:uploadFileResponseHeader" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="DownloadFile">
+      <wsdl:input wsam:Action="http://tempuri.org/IService/DownloadFile" name="DownloadFileRequest" message="tns:DownloadFileRequest" />
+      <wsdl:output wsam:Action="http://tempuri.org/IService/DownloadFileResponse" name="DownloadFileResponse" message="tns:DownloadFileResponse" />
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <wsdl:input wsam:Action="http://tempuri.org/IService/UploadFile" name="UploadFileRequest" message="tns:UploadFileRequest" />
+      <wsdl:output wsam:Action="http://tempuri.org/IService/UploadFileResponse" name="UploadFileResponse" message="tns:UploadFileResponse" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="NetTcpBinding_IService" type="tns:IService">
+    <wsp:PolicyReference URI="#NetTcpBinding_IService_policy">
+    </wsp:PolicyReference>
+    <soap12:binding transport="http://schemas.microsoft.com/soap/tcp" />
+    <wsdl:operation name="DownloadFile">
+      <soap12:operation soapAction="http://tempuri.org/IService/DownloadFile" style="document" />
+      <wsdl:input name="DownloadFileRequest">
+        <soap12:header message="tns:DownloadFileRequest_Headers" part="downloadFileRequestHeader" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="DownloadFileResponse">
+        <soap12:header message="tns:DownloadFileResponse_Headers" part="downloadFileResponseHeader" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadFile">
+      <soap12:operation soapAction="http://tempuri.org/IService/UploadFile" style="document" />
+      <wsdl:input name="UploadFileRequest">
+        <soap12:header message="tns:UploadFileRequest_Headers" part="uploadFileRequestHeader" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="UploadFileResponse">
+        <soap12:header message="tns:UploadFileResponse_Headers" part="uploadFileResponseHeader" use="literal" />
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service">
+    <wsdl:port name="NetTcpBinding_IService" binding="tns:NetTcpBinding_IService">
+      <soap12:address location="net.tcp://localhost:8732/StreamingService.Service" />
+      <wsa10:EndpointReference>
+        <wsa10:Address>net.tcp://localhost:8732/StreamingService.Service</wsa10:Address>
+      </wsa10:EndpointReference>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

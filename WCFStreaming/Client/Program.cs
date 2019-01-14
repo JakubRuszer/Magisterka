@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Client
@@ -13,9 +14,10 @@ namespace Client
     {
         private static string pathFile = string.Empty;
         private static int numberOfConcurrentRequest = 20;
+        private static int counter = 0;
+        private static Mutex mtx = new Mutex();
+        private static AutoResetEvent ars = new AutoResetEvent(false);
 
-        //parametr ściażka
-        //parametr ilość 
         static void Main(string[] args)
         {
 
@@ -33,16 +35,17 @@ namespace Client
                     Program.numberOfConcurrentRequest = 20;
             }
             ProcesWithSyncStreamingService(pathFile, Program.numberOfConcurrentRequest);
-
         }
 
         private static void ProcesWithSyncStreamingService(string pathFile, int numberOfConcurrent)
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
+            
             for (int i = 0; i < Program.numberOfConcurrentRequest; i++)
                  Program.UploadFileToService(pathFile, numberOfConcurrent);
 
+            Program.ars.WaitOne();
             stopwatch.Stop();
             Console.WriteLine("WCF ... {0} ms", stopwatch.ElapsedMilliseconds);
         }
@@ -53,7 +56,6 @@ namespace Client
             {
                 UploadFileRequest request = new UploadFileRequest();
                 UploadFileRequestHeader requestHeader = new UploadFileRequestHeader();
-               // UploadFileResponse response ;
 
                 requestHeader.FileName = filePath.Substring(filePath.LastIndexOf("\\")+1);
                 request.uploadFileRequestHeader = requestHeader;
@@ -63,6 +65,8 @@ namespace Client
                     request.File = fs;
                     using (ServiceClient sc = new ServiceClient())
                     {
+
+                        Interlocked.Increment(ref Program.counter);
                         sc.UploadFileCompleted += Sc_UploadFileCompleted;
                         sc.UploadFileAsync(request);
                     }
@@ -72,6 +76,9 @@ namespace Client
 
         private static void Sc_UploadFileCompleted(object sender, UploadFileCompletedEventArgs e)
         {
+            int counterLocalCopy = Interlocked.Decrement(ref Program.counter);
+            if (counterLocalCopy == 0)
+                Program.ars.Set();
             if (e.Result.uploadFileResponseHeader.Result == 1)
             {
                 Console.Out.WriteLine("Plik wysłano!!!");

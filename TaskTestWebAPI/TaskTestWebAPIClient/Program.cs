@@ -68,7 +68,6 @@ namespace TaskTestWebAPIClient
             try
             {
                 httpClient = new HttpClient();
-                //httpClient.BaseAddress = new Uri(webApiUrl);
                 httpClient.Timeout = Timeout.InfiniteTimeSpan;
                 httpClient.DefaultRequestHeaders.Accept.Clear();
                 httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -82,6 +81,9 @@ namespace TaskTestWebAPIClient
             return httpClient;
         }
 
+        // test klient działa tylko asynchronicznie
+       // jest to metoda która opakowywuje, ma pętle 20 razy wywołuje metode sendFileapi, przejdzie do następnegokoroku  pętli bez czekania do natępnego. 
+       //wait jest po to zeby czekał na zakończenie wątków pobocznych
         private static void ProcessWithSyncService(HttpClient httpClient)
         {
             Stopwatch stopwatch = new Stopwatch();
@@ -96,6 +98,7 @@ namespace TaskTestWebAPIClient
             stopwatch.Stop();
             Console.WriteLine("Processing with SYNC service took {0} ms", stopwatch.ElapsedMilliseconds);
         }
+
 
         private static void ProcessWithAsyncService(HttpClient httpClient)
         {
@@ -136,6 +139,7 @@ namespace TaskTestWebAPIClient
                     streamContent.Headers.ContentType = new MediaTypeHeaderValue("application/octet-stream");
                     content = new MultipartFormDataContent();
                     content.Add(streamContent);
+                    // jest tylko post async. nie ma czegoś takiego jak zwykły post, tak została ta klasa napisana
                     await httpClient.PostAsync(webApiUrl, content);
                 }
                 catch (Exception ex)

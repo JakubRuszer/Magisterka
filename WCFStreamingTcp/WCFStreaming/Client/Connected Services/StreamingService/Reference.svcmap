@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="6f420e47-8f50-4f8a-924b-503e89079762" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>true</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>true</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="net.tcp://localhost:8732/StreamingService.Service/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service1.wsdl" MetadataType="Wsdl" ID="99a481ba-f73a-4a88-be48-8e3bafeb3c75" SourceId="1" SourceUrl="net.tcp://localhost:8732/StreamingService.Service/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="2c357f73-396f-40d4-80b2-129e230c604a" SourceId="1" SourceUrl="net.tcp://localhost:8732/StreamingService.Service/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="2366e169-7db5-47c3-be0e-9cc25c4465fb" SourceId="1" SourceUrl="net.tcp://localhost:8732/StreamingService.Service/mex" />
+    <MetadataFile FileName="StreamingService4.xsd" MetadataType="Schema" ID="1c9091b9-95f4-4e19-b35a-ef47d87b73e2" SourceId="1" SourceUrl="net.tcp://localhost:8732/StreamingService.Service/mex" />
+    <MetadataFile FileName="Message.xsd" MetadataType="Schema" ID="d3bb8295-aeb9-4b1a-ac28-6f381f8b4758" SourceId="1" SourceUrl="net.tcp://localhost:8732/StreamingService.Service/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
