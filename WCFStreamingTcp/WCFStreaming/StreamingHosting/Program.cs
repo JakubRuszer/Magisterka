@@ -26,7 +26,6 @@ namespace StreamingHosting
                         host.Description.Behaviors.Add(smb);
                     }
                     smb.MetadataExporter.PolicyVersion = PolicyVersion.Policy15;
-                    // Add MEX endpoint
                     host.AddServiceEndpoint(
                       ServiceMetadataBehavior.MexContractName,
                       MetadataExchangeBindings.CreateMexTcpBinding(),

@@ -23,12 +23,12 @@ namespace Client
 
             if (args.Length != 2)
             {
-                Console.WriteLine("Incorrect program invocation command, please try the following one:  ");
+                Console.WriteLine("Incorrect program invocation command, please try the following one: path_to_file numberOfConcurrentRequest");
                 return;
             }
 
             Program.pathFile = args[0];
-            
+
             if (Int32.TryParse(args[1], out Program.numberOfConcurrentRequest))
             {
                 if ((Program.numberOfConcurrentRequest < 1) || (Program.numberOfConcurrentRequest > 100))
@@ -41,52 +41,54 @@ namespace Client
         {
             Stopwatch stopwatch = new Stopwatch();
             stopwatch.Start();
-            
-            for (int i = 0; i < Program.numberOfConcurrentRequest; i++)
-                 Program.UploadFileToService(pathFile, numberOfConcurrent);
 
-            Program.ars.WaitOne();
-            stopwatch.Stop();
+            using (ServiceClient sc = new ServiceClient())
+            {
+                sc.UploadFileCompleted += Sc_UploadFileCompleted;
+                for (int i = 0; i < Program.numberOfConcurrentRequest; i++)
+                    Program.UploadFileToService(pathFile, sc);
+
+                Program.ars.WaitOne();
+                stopwatch.Stop();
+            }
+
             Console.WriteLine("WCF ... {0} ms", stopwatch.ElapsedMilliseconds);
         }
 
-        public static void UploadFileToService(string filePath, int numberOfConcurrent)
+        public static void UploadFileToService(string filePath, ServiceClient sc)
         {
-            if(filePath != string.Empty)
+            if (filePath != string.Empty)
             {
                 UploadFileRequest request = new UploadFileRequest();
                 UploadFileRequestHeader requestHeader = new UploadFileRequestHeader();
 
-                requestHeader.FileName = filePath.Substring(filePath.LastIndexOf("\\")+1);
+                requestHeader.FileName = filePath.Substring(filePath.LastIndexOf("\\") + 1);
                 request.uploadFileRequestHeader = requestHeader;
 
-                using (FileStream fs = new FileStream(filePath, FileMode.Open))
-                {
-                    request.File = fs;
-                    using (ServiceClient sc = new ServiceClient())
-                    {
+                FileStream fs = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+                request.File = fs;
 
-                        Interlocked.Increment(ref Program.counter);
-                        sc.UploadFileCompleted += Sc_UploadFileCompleted;
-                        sc.UploadFileAsync(request);
-                    }
-                }
+                //Program.mtx.WaitOne();
+                //Program.counter++;
+                //Program.mtx.ReleaseMutex();
+                Interlocked.Increment(ref Program.counter);
+                sc.UploadFileAsync(request, fs);
             }
         }
 
         private static void Sc_UploadFileCompleted(object sender, UploadFileCompletedEventArgs e)
         {
+            //Program.mtx.WaitOne();
+            //Program.counter--;
+            //if (Program.counter == 0)
+            //    Program.ars.Set();
+            //Program.mtx.ReleaseMutex();
+            if ((e.UserState != null) && ((e.UserState as FileStream) != null))
+                ((FileStream)e.UserState).Close();
+
             int counterLocalCopy = Interlocked.Decrement(ref Program.counter);
             if (counterLocalCopy == 0)
                 Program.ars.Set();
-            if (e.Result.uploadFileResponseHeader.Result == 1)
-            {
-                Console.Out.WriteLine("Plik wysłano!!!");
-            }
-            else
-            {
-                Console.Out.WriteLine(e.Result.uploadFileResponseHeader.Message);
-            }
         }
     }
 }

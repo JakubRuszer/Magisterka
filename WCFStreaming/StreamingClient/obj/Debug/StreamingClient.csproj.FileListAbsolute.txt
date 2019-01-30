@@ -17,3 +17,12 @@ C:\Users\jarus1\Desktop\Jakub Ruszer\WCFStreaming\StreamingClient\obj\Debug\Stre
 C:\Users\jarus1\Desktop\Jakub Ruszer\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.exe
 C:\Users\jarus1\Desktop\Jakub Ruszer\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.pdb
 C:\Users\jarus1\Desktop\Jakub Ruszer\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.csprojResolveAssemblyReference.cache
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\bin\Debug\StreamingClient.exe.config
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\bin\Debug\StreamingClient.exe
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\bin\Debug\StreamingClient.pdb
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.csprojResolveAssemblyReference.cache
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.Form1.resources
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.Properties.Resources.resources
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.csproj.GenerateResource.Cache
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.exe
+C:\Users\jarus1\Desktop\Jakub Ruszer\Magisterka\WCFStreaming\StreamingClient\obj\Debug\StreamingClient.pdb
